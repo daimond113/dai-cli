@@ -1,0 +1,22 @@
+{
+	"name": "@daimond113/dai-cli",
+	"version": "1.0.0",
+	"type": "module",
+	"bin": {
+		"dai-cli": "./index.js"
+	},
+	"repository": "https://github.com/daimond113/dai-cli.git",
+	"dependencies": {
+		"ascii-art": "^2.8.5",
+		"chalk": "^5.0.0",
+		"execa": "^6.0.0",
+		"nanospinner": "^1.0.0",
+		"yargs": "^17.3.1"
+	},
+	"devDependencies": {
+		"@types/ascii-art": "^1.4.0",
+		"@types/node": "16",
+		"@types/yargs": "^17.0.8",
+		"typescript": "^4.5.5"
+	}
+}

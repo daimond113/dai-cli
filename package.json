@@ -18,5 +18,8 @@
 		"@types/node": "16",
 		"@types/yargs": "^17.0.8",
 		"typescript": "^4.5.5"
-	}
+	},
+	"files": [
+		"*.js"
+	]
 }

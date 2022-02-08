@@ -229,50 +229,58 @@ export const makeMonorepoPackage = async (
 	)
 	await writeFile(
 		join(basePath, 'package.json'),
-		JSON.stringify({
-			name,
-			version: '0.0.1',
-			description: 'An awesome package created by dai-cli',
-			main: 'dist/index.js',
-			typings: ae ? 'dist/base.d.ts' : 'dist/index.d.ts',
-			repository: 'https://example.com',
-			homepage: 'https://example.com',
-			author: {
-				name: 'dai-cli',
-				email: 'contact@daimond113.com',
-				url: 'https://www.daimond113.com',
+		JSON.stringify(
+			{
+				name,
+				version: '0.0.1',
+				description: 'An awesome package created by dai-cli',
+				main: 'dist/index.js',
+				typings: ae ? 'dist/base.d.ts' : 'dist/index.d.ts',
+				repository: 'https://example.com',
+				homepage: 'https://example.com',
+				author: {
+					name: 'dai-cli',
+					email: 'contact@daimond113.com',
+					url: 'https://www.daimond113.com',
+				},
+				files: ['dist', 'README.md', 'package.json'],
+				license: 'MIT',
+				scripts: {
+					cleanup: 'rimraf dist',
+					compile: `tsc -p ${jest ? 'tsconfig.prod.json' : 'tsconfig.json'}`,
+					build: 'yarn cleanup && yarn compile && yarn ae',
+					'build:local': 'yarn cleanup && yarn compile && yarn ae --local',
+					ae: 'api-extractor run --verbose',
+				},
 			},
-			files: ['dist', 'README.md', 'package.json'],
-			license: 'MIT',
-			scripts: {
-				cleanup: 'rimraf dist',
-				compile: `tsc -p ${jest ? 'tsconfig.prod.json' : 'tsconfig.json'}`,
-				build: 'yarn cleanup && yarn compile && yarn ae',
-				'build:local': 'yarn cleanup && yarn compile && yarn ae --local',
-				ae: 'api-extractor run --verbose',
-			},
-		})
+			null,
+			2
+		)
 	)
 	await writeFile(
 		join(basePath, 'tsconfig.json'),
-		JSON.stringify({
-			compilerOptions: {
-				experimentalDecorators: true,
-				target: 'es6',
-				module: 'CommonJS',
-				moduleResolution: 'node',
-				strict: true,
-				esModuleInterop: true,
-				skipLibCheck: true,
-				forceConsistentCasingInFileNames: true,
-				declaration: true,
-				declarationMap: true,
-				outDir: 'dist',
-				resolveJsonModule: true,
-				allowJs: true,
-				sourceMap: true,
+		JSON.stringify(
+			{
+				compilerOptions: {
+					experimentalDecorators: true,
+					target: 'es6',
+					module: 'CommonJS',
+					moduleResolution: 'node',
+					strict: true,
+					esModuleInterop: true,
+					skipLibCheck: true,
+					forceConsistentCasingInFileNames: true,
+					declaration: true,
+					declarationMap: true,
+					outDir: 'dist',
+					resolveJsonModule: true,
+					allowJs: true,
+					sourceMap: true,
+				},
 			},
-		})
+			null,
+			2
+		)
 	)
 	if (jest) {
 		await writeFile(

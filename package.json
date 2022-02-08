@@ -1,6 +1,6 @@
 {
 	"name": "@daimond113/dai-cli",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"type": "module",
 	"bin": {
 		"dai-cli": "./index.js"

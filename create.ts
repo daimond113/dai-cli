@@ -93,7 +93,7 @@ export async function createCommand(args: yargs.Argv) {
 		)
 	}
 
-	await execa('yarn', ['install', '-D', ...packagesArgs], { cwd: path })
+	await execa('yarn', ['add', '-D', ...packagesArgs], { cwd: path })
 
 	installedSpinner.success()
 
